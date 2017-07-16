@@ -94,11 +94,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="blog of lilong">
+<meta property="og:title" content="blog of July">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="blog of lilong">
+<meta property="og:site_name" content="blog of July">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blog of lilong">
+<meta name="twitter:title" content="blog of July">
 
 
 
@@ -132,7 +132,7 @@
 
 
 
-  <title>blog of lilong</title>
+  <title>blog of July</title>
   
 
 
@@ -170,7 +170,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">blog of lilong</span>
+        <span class="site-title">blog of July</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -297,16 +297,160 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/uploadify的使用总结/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/jquery-validate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/07/jquery-validate/" itemprop="url">jquery-validate</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-07T22:21:15+08:00">
+                2017-07-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/javascript/webfront/" itemprop="url" rel="index">
+                    <span itemprop="name">webfront</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="jquery-validate插件的使用介绍"><a href="#jquery-validate插件的使用介绍" class="headerlink" title="jquery-validate插件的使用介绍"></a>jquery-validate插件的使用介绍</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// validate方法是注册一个验证事件</span></div><div class="line"><span class="comment">// 而不是说调用该方法才会验证！</span></div><div class="line">$(<span class="string">"form"</span>).validate(&#123;</div><div class="line">	<span class="attr">sendForm</span>: <span class="literal">false</span>,</div><div class="line">	<span class="comment">// onKeyup: true,</span></div><div class="line">	<span class="comment">// onBlur: true,	</span></div><div class="line">	<span class="comment">// onChange: true,</span></div><div class="line">	<span class="comment">// onSubmit: false,</span></div><div class="line">	<span class="comment">// valid: function()&#123;</span></div><div class="line">	<span class="comment">// 	//当整个表单通过验证的时候，会调用该回调方法</span></div><div class="line">	<span class="comment">// 	console.log("验证通过了");</span></div><div class="line">	<span class="comment">// &#125;,</span></div><div class="line">	<span class="comment">// invalid: function()&#123;</span></div><div class="line">	<span class="comment">// 	console.log("验证不通过");</span></div><div class="line">	<span class="comment">// &#125;,</span></div><div class="line">	<span class="comment">// eachField: function()&#123;</span></div><div class="line">	<span class="comment">// 	console.log("eachField被调用了", this);</span></div><div class="line">	<span class="comment">// &#125;,</span></div><div class="line">	eachValidField: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// console.log("eachValidField,被调用了", this);</span></div><div class="line">		<span class="keyword">this</span>.next().show().removeClass(<span class="string">"error"</span>).addClass(<span class="string">"success"</span>);</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">eachInvalidField</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="comment">// console.log("eachInvalidField,被调用了", this);</span></div><div class="line">		<span class="keyword">this</span>.next().show().removeClass(<span class="string">"success"</span>).addClass(<span class="string">"error"</span>);</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">conditional</span>: &#123;</div><div class="line">		<span class="string">"isShuaiGe"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.val() == <span class="string">"潘明"</span>;</div><div class="line">		&#125;,</div><div class="line">		<span class="string">"isBeauty"</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.val() == <span class="string">"教主"</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;,</div><div class="line">	<span class="attr">description</span>: &#123;</div><div class="line">		<span class="string">"username"</span>: &#123;</div><div class="line">			<span class="attr">required</span>: <span class="string">"用户名不能为空"</span>,</div><div class="line">			<span class="attr">conditional</span>: <span class="string">"你输入的不是美女"</span>,</div><div class="line">			<span class="attr">valid</span>: <span class="string">"输入正确！"</span></div><div class="line">		&#125;,</div><div class="line">		<span class="string">"phone"</span>: &#123;</div><div class="line">			<span class="attr">pattern</span>: <span class="string">"手机号码不正确"</span>,</div><div class="line">			<span class="attr">required</span>: <span class="string">"请输入手机号码"</span>,</div><div class="line">			<span class="attr">valid</span>: <span class="string">"输入正确"</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/uploadify的使用总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="July">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/87.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -453,13 +597,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/立即执行函数表达式-数组的方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -636,13 +780,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/面向对象中的闭包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -789,13 +933,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/递归-作用域-变量提升/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -965,13 +1109,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/原型链/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -1180,13 +1324,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/面向对象基础知识/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -1354,13 +1498,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/构造函数及原型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -1518,13 +1662,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp使用方法总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -1684,13 +1828,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/07/gulp的使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
+      <meta itemprop="name" content="July">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/87.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
+      <meta itemprop="name" content="blog of July">
     </span>
 
     
@@ -1831,157 +1975,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/模块化的总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Lilong">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/87.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="blog of lilong">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/29/模块化的总结/" itemprop="url">模块化的总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T20:54:54+08:00">
-                2017-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/" itemprop="url" rel="index">
-                    <span itemprop="name">web</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web/frontend/" itemprop="url" rel="index">
-                    <span itemprop="name">frontend</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><h3 id="CommonJS"><a href="#CommonJS" class="headerlink" title="CommonJS"></a>CommonJS</h3><p>js代码的模块化标准，不适用于前端开发，NodeJS在使用该标准实现模块化</p>
-<h3 id="AMD"><a href="#AMD" class="headerlink" title="AMD"></a>AMD</h3><p>Async Module Definition 异步模块定义</p>
-<p>尽可能早的加载所有需要用到的模块，模块的加载都是异步的，如果要在模块加载完成后，利用模块中的内容实现某些功能，需要将代码写在 require的第二个参数的回调函数中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">	<span class="comment">//正确的写法</span></div><div class="line">	<span class="built_in">require</span>([<span class="string">"views/assets/jquery/jquery"</span>],<span class="function"><span class="keyword">function</span>(<span class="params">value</span>))</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(value);</div><div class="line">	<span class="comment">//错误的写法</span></div><div class="line">	<span class="built_in">require</span>([<span class="string">"views/assets/jquery/jquery"</span>]);</div><div class="line">	<span class="comment">//因为加载是异步的,执行下面的代码console.log(value)的时候,第三方块的内容还没有加载完成,所以value是undefined;</span></div><div class="line">	<span class="built_in">console</span>.log(value);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/29/模块化的总结/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2020,8 +2013,8 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/87.png"
-               alt="Lilong" />
-          <p class="site-author-name" itemprop="name">Lilong</p>
+               alt="July" />
+          <p class="site-author-name" itemprop="name">July</p>
            
               <p class="site-description motion-element" itemprop="description"></p>
           
@@ -2099,7 +2092,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Lilong</span>
+  <span class="author" itemprop="copyrightHolder">July</span>
 </div>
 
 

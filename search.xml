@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hello World]]></title>
+    <url>%2F2017%2F07%2F16%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[angular中服务的创建方式]]></title>
     <url>%2F2017%2F07%2F16%2Fangular%E4%B8%AD%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%88%9B%E5%BB%BA%E6%96%B9%E5%BC%8F-1%2F</url>
     <content type="text"><![CDATA[服务的创建方式 service 12345678910模块对象 .service("服务名", ["注入服务", function(注入的服务)&#123; //通过this给服务添加属性和方法，最终提供给调用服务的人使用 //最终用户获取到的服务对象，其实就是使用本函数，构造出来 //也就是说用new的方式创建出来的 this.数据: 数据 this.方法= function()&#123; &#125; &#125;]) factory 12345678910模块对象 .factory("服务名", ["注入服务", function(注入的服务)&#123; //通过给obj对象添加属性和方法，最终提供给调用服务的人使用 //最终用户获取到的服务对象，其实就是使用本函数，使用工厂模式创建的 var obj = &#123;&#125;; 数据: 数据, 方法: function()&#123; &#125; return obj; &#125;]) value 12模块名称 .value("服务名称", &#123;//最终提供服务的对象，就是本对象！&#125;) constant 12模块名称 .constant("服务名称", &#123;//最终提供服务的对象，就是本对象！&#125;) provider 12345678910111213模块名称 .provider("服务名称", function()&#123; //这里可以声明一些变量，来保存服务的配置信息！ return &#123; //这个对象其实就是在config方法中获取到的 服务Provider 对象 //这个对象中必须包含一个$get方法 $get: function()&#123; return &#123; //这个对象就是最终的服务对象，用户所使用的服务就是本对象！ &#125; &#125; &#125; &#125;) Dirty-Check 脏检查机制，ng双向数据绑定的原理在angular初始化的时候，会先创建模块对象，初始化该模块，初始化模块的时候，会在该模块所管辖的view范围内，搜索所有的ng指令，找到指令之后，为每一个指令绑定一个$watcher,这个watcher会在数据或者dom元素发生改变的时候，被调用！ 每当有一个watcher被触发，那么就会开启一次新的$digest, $digest中，会对所有的$watcher，一次执行来检测是否有数据变化，如果有变换，会重新启动一次$digest, 依次循环，直到检测不到任何变化为止，最终开始更新dom操作！！ $apply 其实就是将相应的操作做了一个包装，先执行只写操作，然后再去调用$digest开始在脏检查 在angular中angular负责的所有的内容，都会默认的被$apply进行包裹，如果使用到了非angular控制的内容，比如setTimeout， 在这个里面的数据操作，将不会触发watcher，也就不会进行脏检查，所以，我们需要手动进行在脏检查 调用$apply来执行数据操作 123$scope.$apply(function()&#123; //做需要的数据操作&#125;) 做完数据操作之后，手动调用$digest方法 12//做完数据操作$scope.$digest(); angular-route使用步骤： 引入angular-route.js文件 在使用该angular-route模块的模块中加入依赖项 ngRoute 在模块的config方法中对angular-route进行配置 配置需要注入的内容为 $routeProvider 使用when方法进行配置12345678910111213141516171819202122232425262728angular .module("app", ["ngRoute"]) .config(["$routeProvider", function($routeProvider)&#123; $routeProvider.when("hash路径匹配规则", &#123; template: "视图html代码", //template属性和templateUrl只需要并且必须存在一个！ templateUrl: "视图路径", controller: "控制器" &#125;) //路由传参 在路由规则当中指定传参的形式，以及参数的名称 .when("hash路径/:参数名称", &#123; template: "视图html代码", templateUrl: "视图路径", controller: "控制器" &#125;) .otherwise(&#123; //这里做的就是当所有的匹配规则都不满足的情况下做的事情 //redierctTo: 就是进行路径跳转的操作 redirectTo: "hash路径" &#125;) &#125;]) //获取路由传进来的参数 .controller("c1", ["$route", "$routeParams", function($route, $routeParams)&#123; //1. 通过$route服务获取 $route.current.pathParams; //1. 通过$routeParams服务获取 $routeParams; &#125;]) 更改哈希路径前的字符 #!/ 感叹号这个东西是在1.6之后默认会加上的1234.config(["$locationProvider", function($locationProvider)&#123; //hashPrefix可以更改上面那个感叹号， 如果不想要就给空字符串 $locationProvider.hashPrefix("");&#125;])]]></content>
@@ -138,8 +143,8 @@
         <category>webfront</category>
       </categories>
       <tags>
-        <tag>plugs</tag>
         <tag>uploadify</tag>
+        <tag>plugs</tag>
       </tags>
   </entry>
   <entry>
@@ -404,10 +409,5 @@
         <tag>javascript</tag>
         <tag>web</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2017%2F06%2F25%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
 </search>
